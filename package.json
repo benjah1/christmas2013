@@ -1,0 +1,16 @@
+{
+	"name": "christmas2013",
+	"version": "0.1.0",
+	"author": "Zhibin Huang <benjaminhuang1@gmail.com>",
+	"description": "Annual christmas project",
+	"respository": {
+		"type": "git",
+		"url": "https://github.com/benjah1/christmas2013"
+	},
+	"devDependencies": {
+		"requirejs": "2.1.9",
+		"angular.js": "git@github.com:angular/angular.js.git#0.1.5",
+		"jquery": "git@github.com:jquery/jquery.git#1.10.2"
+	},
+	"license": "MIT"
+}

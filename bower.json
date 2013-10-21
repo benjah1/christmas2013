@@ -1,0 +1,22 @@
+{
+  "name": "christmas2013",
+  "version": "0.1.0",
+  "homepage": "https://github.com/benjah1/christmas2013",
+  "authors": [
+    "Zhibin Huang <benjaminhuang1@gmail.com>"
+  ],
+	"devDependencies": {
+		"requirejs": "2.1.9",
+		"angular.js": "https://github.com/angular/angular.js/tree/v1.1.5",
+		"jquery": "https://github.com/jquery/jquery/tree/1.10.2",
+		"sprite3d": "https://github.com/boblemarin/Sprite3D.js"
+	},
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
