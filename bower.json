@@ -7,9 +7,9 @@
   ],
 	"devDependencies": {
 		"requirejs": "2.1.9",
-		"angular.js": "https://github.com/angular/angular.js/tree/v1.1.5",
-		"jquery": "https://github.com/jquery/jquery/tree/1.10.2",
-		"sprite3d": "https://github.com/boblemarin/Sprite3D.js"
+		"angular": "v1.2.0-rc.3",
+		"jquery": "1.10.2",
+		"sprite": "https://github.com/boblemarin/Sprite3D.js.git#master"
 	},
   "license": "MIT",
   "ignore": [
