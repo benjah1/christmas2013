@@ -1,28 +1,27 @@
 body {
-  background-color: #000;
+  background-color: #606;
   color: #fff;
   overflow: hidden; }
 
 #stage {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0; }
-  #stage #upper {
-    background-color: #000;
+  width: 600px;
+  height: 400px;
+  margin: 100px auto;
+  background-color: rgba(0, 0, 0, 0.5); }
+  #stage #container {
     width: 100%;
-    height: 400px;
-    display: none; }
-  #stage #lower {
-    background-color: #000;
-    width: 100%;
-    height: 200px; }
-  #stage #object {
-    width: 60px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); }
+  #stage .obj {
     height: 160px;
     background-color: #090; }
+  #stage .object {
+    width: 50px; }
+  #stage .obj_side_left {
+    width: 20px; }
+  #stage .obj_side_right {
+    width: 20px; }
   #stage #bg {
     width: 500%;
-    height: 600px;
+    height: 400px;
     background-color: #fff; }

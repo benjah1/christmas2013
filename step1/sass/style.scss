@@ -1,40 +1,42 @@
 
 body {
-	background-color: #000;
+	background-color: #606;
 	color: #fff;
 	overflow: hidden;
 }
 
 #stage{
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
+	width: 600px;
+	height: 400px;
+	margin: 100px auto;
+	background-color: rgba(0, 0, 0, 0.5);
 
-
-	#upper {
-		background-color: #000;
-		width: 100%;
-		height: 400px;
-		display:none;
-	}	
-
-	#lower {
-		background-color: #000;
-		width: 100%;
-		height: 200px;
+	#container {
+		width:100%;
+		height:100%;
+		background-color: rgba(0,0,0,0.5);
 	}
 
-	#object {
-		width: 60px;
+
+	.obj {
 		height: 160px;
 		background-color: #090;
 	}
+	.object {
+		width: 50px;
+	}
+	.obj_side_left {
+		width: 20px;
+	}
+	.obj_side_right {
+		width: 20px;
+	}
+
+
 
 	#bg {
-		width:500%;
-		height:600px;
+		width: 500%;
+		height: 400px;
 		background-color: #fff;
 	}
 }
