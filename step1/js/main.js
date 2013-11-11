@@ -23,6 +23,7 @@ require( ['sprite','jquery'], function(Sprite3D, $ ){
 			width: $(window).width(),
 			height: $(window).height()
 		};
+	var fps = 2;
 		
  	console.log( isSupported );	
 
@@ -30,7 +31,9 @@ require( ['sprite','jquery'], function(Sprite3D, $ ){
 	console.log( $('#stage').get(0) );
 
 	var stage = Sprite3D.stage($('#stage').get(0)).origin(0, 0, 0).position(0 ,0,0).perspective(400).update();
-	$('#stage').css(Sprite3D._browserPrefix+'TransformStyle', 'preserve-3d');
+	$('#stage')
+		.css(Sprite3D._browserPrefix+'TransformStyle', 'preserve-3d')
+		.css('transition', 'all '+(1/fps)+'s');
 
 	var container = Sprite3D.create('#container').origin(0,0,0).position(0,0,0).update();
 
@@ -63,9 +66,31 @@ console.log($('#bg'));
 		//container.origin((e.pageX-width/2)*0.2+width/2,-200,0).rotation(Math.abs(e.pageX-width/2)*0.00, 0, 0).update();
 		//stage.rotation(dy/dg, dx/dg, 0).update();
 		
-		container.rotation(dy/dg, dx/dg, 0).update();
-		bg.rotation(dy/dg ,dx/dg, 0).update();
+		container.rotation(-dy/dg, dx/dg, 0).update();
+		//bg.rotation(dy/dg ,dx/dg, 0).update();
 		//object.rotation(0 ,dx/(dg), 0).update();
 
 	});
+	
+	setInterval((function(){
+		var s = 0, dt = 1;
+		return function(){
+			switch(s){
+				case 0:
+					stage.rotationY(dt).update();
+					break;
+				case 1:
+					stage.rotationX(dt*-1).update();
+					break;
+				case 2:
+					stage.rotationY(dt*-1).update();
+					break;
+				case 3:
+					stage.rotationX(dt).update();	
+					break;
+			}
+			s = (++s)%4;
+			console.log(s);
+		}
+	})(),1000/(fps*2));
 });
