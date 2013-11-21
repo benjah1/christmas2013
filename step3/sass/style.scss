@@ -1,0 +1,99 @@
+$animate-time: 1.6s;
+$animate-delay: 0.28*$animate-time;
+
+body {
+	background-color: #606;
+	color: #fff;
+	overflow: hidden;
+}
+
+#stage{
+	width: 600px;
+	height: 400px;
+	margin: 100px auto;
+	background-color: rgba(30, 30, 30, 0.5);
+
+	#container {
+		background-color: rgba(0,0,0,0.8);
+		width:100%;
+		height:100%;
+		margin: 0 auto!important;
+		position:inherit!important;
+	}
+	
+	.pContainer {
+		width:100%;
+		height:100%;
+		-webkit-transform-origin-y:450px;
+	}
+
+	.object1 {
+		height: 160px;
+		background-color: #630;
+		width: 50px;
+		-webkit-transform-origin-y:160px;
+	}
+	
+	.pObject1 {
+		-webkit-transform-origin-x:324px;
+		-webkit-transform-origin-y:360px; /*310px*/
+	}
+
+	.object2 {
+		height: 120px;
+		background-color: #090;
+		width: 140px;
+	}
+
+	.pObject2 {
+		-webkit-transform-origin-x:24px;
+		-webkit-transform-origin-y:100px; /*70px*/
+	}
+
+
+
+	#bg {
+		width: 500%;
+		height: 400px;
+		background-color: #fff;
+	}
+}
+
+.animate {
+	.bouncing {
+		width:100%;
+		height:100%;
+		-webkit-animation: POP $animate-time;
+		-webkit-transform-style: preserve-3d;
+		-webkit-animation-fill-mode: forwards;
+		-webkit-transform: scale(0,0);
+	}
+
+	@for $i from 0 through 6 {
+		.s#{$i} {
+			-webkit-animation-delay: $i*$animate-delay;
+		}		
+	}
+}
+
+@-webkit-keyframes POP{
+	0% {
+		-webkit-transform: scale(0,0);
+	}
+	30% {
+		-webkit-transform: scale(1.4,1.4);
+	}
+	50% {
+		-webkit-transform: scale(0.6,0.6);
+	}
+	65% {
+		-webkit-transform: scale(1.2,1.2);
+	}
+	80% {
+		-webkit-transform: scale(0.8,0.8);
+	}
+	100% {
+		-webkit-transform: scale(1,1);
+	}
+}
+
