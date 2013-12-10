@@ -1,22 +1,17 @@
 {
   "name": "christmas2013",
-  "version": "0.1.0",
-  "homepage": "https://github.com/benjah1/christmas2013",
-  "authors": [
-    "Zhibin Huang <benjaminhuang1@gmail.com>"
-  ],
-	"devDependencies": {
+  "version": "0.0.0",
+  "dependencies": {
 		"requirejs": "2.1.9",
-		"angular": "v1.2.0-rc.3",
-		"jquery": "1.10.2",
-		"sprite": "https://github.com/boblemarin/Sprite3D.js.git#master"
-	},
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+		"sprite": "https://github.com/boblemarin/Sprite3D.js.git#master",
+    "angular": "~1.2.0",
+    "json3": "~3.2.4",
+    "es5-shim": "~2.1.0",
+    "jquery": "~1.10.2",
+    "sass-bootstrap": "~3.0.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.0",
+    "angular-scenario": "~1.2.0"
+  }
 }
