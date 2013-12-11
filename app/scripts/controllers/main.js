@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular.module('christmas2013App')
   .controller('MainCtrl', function ($scope) {
@@ -24,8 +24,8 @@ angular.module('christmas2013App')
 
 		console.log(stage);
 		var bg = Sprite3D.create('#bg').transformOrigin(0,0).position(-sta.width*2,0,-1000).update();
-		var object1 = Sprite3D.create('.object1 obj').position(300,150,100).origin(0,0,0).update();
-		var object2 = Sprite3D.create('.object2 obj').position(-45,-20,10).origin(0,0,0).update();
+		var object1 = Sprite3D.create('.t_feet obj').position(200,150,100).origin(0,0,0).update();
+		var object2 = Sprite3D.create('.t_mid obj').position(-100,-90,10).origin(0,0,0).update();
 
 		stage.appendChild( container );
 		container.appendChild( bg);
@@ -33,8 +33,8 @@ angular.module('christmas2013App')
 		object1.appendChild( object2 );
 
 		$('#container').wrap('<div class="bouncing s0 pContainer">');
-		$('.object1').wrap('<div class="bouncing s1 pObject1">');
-		$('.object2').wrap('<div class="bouncing s2 pObject2">');
+		$('.t_feet').wrap('<div class="bouncing s1 pObject1">');
+		$('.t_mid').wrap('<div class="bouncing s2 pObject2">');
 
 	console.log($('#bg'));
 		$('#bg').css('top','500px');

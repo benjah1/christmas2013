@@ -17,14 +17,22 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
-
-    // Project settings
+ 	  // Project settings
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
     },
-
+		spriteGenerator: {
+			sprite: {
+				src: [
+					'<%= yeoman.app %>/sprite/*.png'
+				],
+				spritePath: '<%= yeoman.app %>/images/sprite.png',
+				stylesheetPath: '<%= yeoman.app %>/styles/sprite.scss',
+				stylesheet: 'css'
+			}
+		},
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
@@ -400,4 +408,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+	grunt.loadNpmTasks('node-sprite-generator');
 };

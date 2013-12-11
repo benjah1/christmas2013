@@ -27,11 +27,8 @@ body {
 		-webkit-transform-origin-y:450px;
 	}
 
-	.object1 {
-		height: 160px;
-		background-color: #630;
-		width: 50px;
-		-webkit-transform-origin-y:160px;
+	.t_feet {
+		-webkit-transform-origin-y:260px;
 	}
 	
 	.pObject1 {
@@ -45,9 +42,13 @@ body {
 		width: 140px;
 	}
 
+	.t_mid {
+		/*-webkit-transform-origin-y:120px;*/
+	}
+
 	.pObject2 {
-		-webkit-transform-origin-x:24px;
-		-webkit-transform-origin-y:100px; /*70px*/
+		-webkit-transform-origin-x:124px;
+		-webkit-transform-origin-y:80px; /*70px*/
 	}
 
 
