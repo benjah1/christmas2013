@@ -7,6 +7,25 @@ body {
 	overflow: hidden;
 }
 
+@mixin el( $el, $x, $y, $ox, $oy){
+	.wrapper-#{$el} {
+		@if $ox != 0 {
+			-webkit-transform-origin-x: #{$ox}px;
+		}
+		@if $oy != 0 {
+			-webkit-transform-origin-y: #{$oy}px;
+		}
+		.#{$el} {
+			@if $x != 0 {
+				-webkit-transform-origin-x: #{$x}px;
+			}
+			@if $y != 0 {
+				-webkit-transform-origin-y: #{$y}px;
+			}
+		}
+	}
+}
+
 #stage{
 	width: 600px;
 	height: 400px;
@@ -27,9 +46,7 @@ body {
 		-webkit-transform-origin-y:450px;
 	}
 
-	.t_feet {
-		-webkit-transform-origin-y:260px;
-	}
+	@include el('t_feet', 324, 360, 0, 260);
 	
 	.pObject1 {
 		-webkit-transform-origin-x:324px;
@@ -50,8 +67,6 @@ body {
 		-webkit-transform-origin-x:124px;
 		-webkit-transform-origin-y:80px; /*70px*/
 	}
-
-
 
 	#bg {
 		width: 500%;

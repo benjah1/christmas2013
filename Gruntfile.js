@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
- 	  // Project settings
+    // Project settings
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
@@ -61,7 +61,9 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.app %>/{,*/}*.js',
+          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js'
         ]
       }
     },

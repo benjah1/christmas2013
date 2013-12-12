@@ -1,19 +1,24 @@
-'use strict'
+'use strict';
 
-angular.module('christmas2013App')
-  .controller('MainCtrl', function ($scope) {
-  
-		console.log( Sprite3D );
-		var isSupported = Sprite3D.isSupported();
-		var sta = { 
-				width: $('#stage').width(),
-				height: $('#stage').height()
-			};
+define(['app','jQuery','Sprite3D'], function(app,$,Sprite3D){
+	console.log(app);
+	console.log($);
+	console.log( Sprite3D );
+	return app
+		.controller('MainCtrl', function ($scope) {
+		
+		if(1===0){ $scope=null;}
+		console.log( $ );
+		//var isSupported = Sprite3D.isSupported();
+		var sta = {
+			width: $('#stage').width(),
+			height: $('#stage').height()
+		};
 		var win = {
 				width: $(window).width(),
 				height: $(window).height()
 			};
-		var fps = 2;
+		//var fps = 2;
 			
 		var stage = Sprite3D.stage($('#stage').get(0)).origin(0, 0, 0).position(0 ,0,0).perspective(400).update();
 	//	$('#stage')
@@ -36,7 +41,7 @@ angular.module('christmas2013App')
 		$('.t_feet').wrap('<div class="bouncing s1 pObject1">');
 		$('.t_mid').wrap('<div class="bouncing s2 pObject2">');
 
-	console.log($('#bg'));
+		console.log($('#bg'));
 		$('#bg').css('top','500px');
 
 		$(document).resize(function(){
@@ -59,7 +64,7 @@ angular.module('christmas2013App')
 			//container.origin((e.pageX-width/2)*0.2+width/2,-200,0).rotation(Math.abs(e.pageX-width/2)*0.00, 0, 0).update();
 			//stage.rotation(dy/dg, dx/dg, 0).update();
 			
-		container.rotation(-dy/dg, dx/dg, 0).update();
+			container.rotation(-dy/dg, dx/dg, 0).update();
 
 
 			//bg.rotation(dy/dg ,dx/dg, 0).update();
@@ -92,3 +97,4 @@ angular.module('christmas2013App')
 		*/
 
 	});
+});
