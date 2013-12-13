@@ -1,48 +1,74 @@
 'use strict';
 
 define(['app','jQuery','Sprite3D'], function(app,$,Sprite3D){
-	console.log(app);
-	console.log($);
-	console.log( Sprite3D );
-	return app
-		.controller('MainCtrl', function ($scope) {
-		
+	
+	return app.controller('MainCtrl', ['$scope', function MainCtrl($scope) {
+	
+		console.log('hi2');
 		if(1===0){ $scope=null;}
-		console.log( $ );
 		//var isSupported = Sprite3D.isSupported();
+		/*
 		var sta = {
 			width: $('#stage').width(),
 			height: $('#stage').height()
 		};
+		*/
 		var win = {
 				width: $(window).width(),
 				height: $(window).height()
 			};
 		//var fps = 2;
 			
-		var stage = Sprite3D.stage($('#stage').get(0)).origin(0, 0, 0).position(0 ,0,0).perspective(400).update();
-	//	$('#stage')
-	//		.css(Sprite3D._browserPrefix+'TransformStyle', 'preserve-3d');
-	//		.css('transition', 'all '+(1/fps)+'s');
+		var stage = Sprite3D.stage($('#stage').get(0)).origin(0, 0, 0).position(0 ,0,0).perspective(900).update();
 
-		var container = Sprite3D.create('#container').origin(0,0,0).position(0,0,0).update();
+		var scene = Sprite3D.create($('.scene').get(0)).origin(0,0,0).position(0,0,0).update();
 
-		console.log(stage);
-		var bg = Sprite3D.create('#bg').transformOrigin(0,0).position(-sta.width*2,0,-1000).update();
-		var object1 = Sprite3D.create('.t_feet obj').position(200,150,100).origin(0,0,0).update();
-		var object2 = Sprite3D.create('.t_mid obj').position(-100,-90,10).origin(0,0,0).update();
+		var data = [
+			['ground','s1',[0,160,-225],null],
 
-		stage.appendChild( container );
-		container.appendChild( bg);
-		container.appendChild( object1 );
-		object1.appendChild( object2 );
+			['t_feet','s2',[60,-65,-30],[0,20,0]],
+			['t_mid','s3',[-100,-90,30],[15,0,0]],
+			['t_top','s4',[80,-80,35],null],
+			['t_star','s5',[60,-200,50],[-15,0,0]],
 
-		$('#container').wrap('<div class="bouncing s0 pContainer">');
-		$('.t_feet').wrap('<div class="bouncing s1 pObject1">');
-		$('.t_mid').wrap('<div class="bouncing s2 pObject2">');
+			['b_body','s4',[470,-50,30],[0,-15,0]],
+			['b_dress','s5',[20,65,10],null],
+			['b_hat','s6',[40,0,15],null],
 
-		console.log($('#bg'));
-		$('#bg').css('top','500px');
+	
+			['a_body','s3',[530,-115,110],[0,-30,0]],
+			['a_dress','s4',[45,80,10],null],
+			['a_hat','s4',[50,-5,10],null]
+
+		
+		];
+
+		var item, tmp, d;
+		for(item in data){
+			d = data[item];
+			tmp = Sprite3D.create($('.'+d[0]).get(0));
+			if( null !== d[2] ){
+				tmp.position(
+					d[2][0],
+					d[2][1],
+					d[2][2]
+				);
+			}
+			if( null !== d[3] ){
+				tmp.rotation(
+					d[3][0],
+					d[3][1],
+					d[3][2]
+				);
+			}
+			tmp.update();
+		}
+
+
+		for(item in data){
+			d = data[item];
+			$('.'+d[0]).wrap('<div class="bouncing '+d[1]+' wrapper-'+d[0]+'">');
+		}
 
 		$(document).resize(function(){
 			win = {
@@ -51,26 +77,34 @@ define(['app','jQuery','Sprite3D'], function(app,$,Sprite3D){
 			};
 		});
 
+		stage.scale(0.5,0.5,0.5).update();
 		$('body').addClass('animate');
 
-		$(document).mousemove(function(e){
-
-			var dx = e.pageX - win.width/2;
-			var dy = e.pageY - win.height/2;
-
-			var dg = 8;
-
-			//console.log(dx);
-			//container.origin((e.pageX-width/2)*0.2+width/2,-200,0).rotation(Math.abs(e.pageX-width/2)*0.00, 0, 0).update();
-			//stage.rotation(dy/dg, dx/dg, 0).update();
-			
-			container.rotation(-dy/dg, dx/dg, 0).update();
-
-
-			//bg.rotation(dy/dg ,dx/dg, 0).update();
-	//		object1.rotation(dy/dg ,dx/(dg), 0).update();
-
-		});
+		(function(){
+			var hasTimer = false, updated = false, dx, dy, dg = 16,
+			timeFunc = function(){
+				scene.rotation(-dy/dg, dx/dg, 0).update();
+				if(updated){
+					setTimeout(timeFunc,300);
+					updated = false;
+				}else{
+					hasTimer = false;
+				}
+			},
+			mousemove = function(e){
+				if(hasTimer){
+					updated = true;
+				}else{
+					hasTimer = true;
+					updated = false;
+					scene.rotation(-dy/dg, dx/dg, 0).update();
+					setTimeout(timeFunc, 300);
+				}
+				dx = e.pageX - win.width/2;
+				dy = e.pageY - win.height/2;
+			};
+			$(document).mousemove(mousemove);
+		})();
 
 	/*
 		setInterval((function(){
@@ -96,5 +130,5 @@ define(['app','jQuery','Sprite3D'], function(app,$,Sprite3D){
 		})(),1000/(fps*2));
 		*/
 
-	});
+	}]);
 });

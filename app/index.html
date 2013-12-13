@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
 </head>
-  <body ng-app="christmas2013App">
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -26,7 +26,37 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-		<div class="container" ng-view="">
+		<div class="container" ng-controller="MainCtrl">
+			<div id="stage">
+				<div class="scene">
+					<div class="t_ground">
+						<div class="ground">
+							<div class="t_tree">
+								<div class="t_feet">
+									<div class="t_mid">
+										<div class="t_top">
+											<div class="t_star">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="b_snowman">
+								<div class="b_body">
+									<div class="b_dress"></div>
+									<div class="b_hat"></div>
+								</div>
+							</div>
+							<div class="a_snowman">
+								<div class="a_body">
+									<div class="a_dress"></div>
+									<div class="a_hat"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
