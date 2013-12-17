@@ -15,15 +15,12 @@ require.config({
 		},
 		Sprite3D: {
 			exports: 'Sprite3D'
-		},
-		ngRoute: {
-			exports: 'ngRoute'
 		}
 	}
 
 });
 
-require(['app','angular','controllers/main'],function(app,angular){
+require(['app','angular','controllers/scene','controllers/snow'],function(app,angular){
 
 	angular.bootstrap(document, ['christmas2013App']);
 });

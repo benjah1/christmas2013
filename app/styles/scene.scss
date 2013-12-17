@@ -14,7 +14,7 @@ body {
 	.wrapper-#{$el} {
 		width:100%;
 		height:100%;
-		//-webkit-transform: scale(1,1); // debug
+		//-webkit-transform: scale3d(1,1,1); // debug
 		-webkit-transform-style: preserve-3d;
 		@if $ox != 0 {
 			-webkit-transform-origin-x: #{$ox}px;
@@ -40,12 +40,12 @@ body {
 	background-color: rgba(30, 30, 30, 0.5);
 
 	.scene {
-		background-color: rgba(0,0,0,0.8);
+		//background-color: rgba(0,0,0,0.8);
 		width:$maxWidth;
 		height:$maxHeight;
 		margin: 0 auto!important;
 		position:inherit!important;
-		-webkit-transition: -webkit-transform 1.5s linear;
+		-webkit-transition: -webkit-transform 0.3s linear;
 		-webkit-transform-origin-y:450px;
 		div {
 			position:absolute;
@@ -57,11 +57,11 @@ body {
 	.ground {
 		width: $maxWidth;
 		height: $maxHeight;
-		background-color: #fff;
-		-webkit-box-shadow: #fff 0 0 20px 20px;
+		background-color: #eee;
+		-webkit-box-shadow: #eee 0 0 20px 20px;
 		-webkit-border-radius: 10px;
 	}
-	.t_ground, .t_tree, .b_snowman, .a_snowman{
+	.t_ground, .t_tree, .b_snowman, .a_snowman, .g_gift{
 		width: 100%;
 		height: 100%;
 		-webkit-transform-style: preserve-3d;
@@ -81,25 +81,28 @@ body {
 	@include el('t_star', 0, 0, 180, 10);
 
 	@include el('b_body', 0, 0, 560, 190);
-	@include el('b_dress', 0, 0, 100, 10);
-	@include el('b_hat', 0, 0, 130, 90);
+	@include el('b_dress', 0, 0, 130, 90);
+	@include el('b_hat', 0, 0, 100, 10);
 
 	@include el('a_body', 0, 0, 650, 220);
 	@include el('a_dress', 0, 0, 160, 140);
 	@include el('a_hat', 0, 0, 130, 10);
 
-	#bg {
-		width: 500%;
-		height: 400px;
-		background-color: #fff;
-	}
+	@include el('g_top', 0, 0, 0, 0);
+	@include el('g_left_t', 0, 0, 0, 0);
+	@include el('g_mid_t', 0, 0, 0, 0);
+	@include el('g_right_t', 0, 0, 0, 0);
+	@include el('g_left_l', 0, 0, 0, 0);
+	@include el('g_mid_l', 0, 0, 0, 0);
+	@include el('g_right_l', 0, 0, 0, 0);
+
 }
 
 .animate {
 	.bouncing {
 		-webkit-animation: POP $animate-time;
 		-webkit-animation-fill-mode: forwards;
-		-webkit-transform: scale(0,0);
+		-webkit-transform: scale3d(0,0,0);
 	}
 
 	@for $i from 0 through 6 {
@@ -111,22 +114,22 @@ body {
 
 @-webkit-keyframes POP{
 	0% {
-		-webkit-transform: scale(0,0);
+		-webkit-transform: scale3d(0,0,0);
 	}
 	30% {
-		-webkit-transform: scale(1.4,1.4);
+		-webkit-transform: scale3d(1.4,1.4,1.4);
 	}
 	50% {
-		-webkit-transform: scale(0.6,0.6);
+		-webkit-transform: scale3d(0.6,0.6,0.6);
 	}
 	65% {
-		-webkit-transform: scale(1.2,1.2);
+		-webkit-transform: scale3d(1.2,1.2,1.2);
 	}
 	80% {
-		-webkit-transform: scale(0.8,0.8);
+		-webkit-transform: scale3d(0.8,0.8,0.8);
 	}
 	100% {
-		-webkit-transform: scale(1,1);
+		-webkit-transform: scale3d(1,1,1);
 	}
 }
 

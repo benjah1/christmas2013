@@ -2,7 +2,8 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 @import 'sprite.scss';
-@import 'style.scss';
+@import 'scene.scss';
+@import 'snow.scss';
 
 .browsehappy {
     margin: 0.2em 0;

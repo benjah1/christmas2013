@@ -26,11 +26,18 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-		<div class="container" ng-controller="MainCtrl">
+		<div class="container" ng-controller="SceneCtrl">
 			<div id="stage">
 				<div class="scene">
+					<div id="snow" ng-controller="SnowCtrl">
+						<div id="layer0"></div>
+						<div id="layer1"></div>
+						<div id="layer2"></div>
+					</div>
+
 					<div class="t_ground">
 						<div class="ground">
+
 							<div class="t_tree">
 								<div class="t_feet">
 									<div class="t_mid">
@@ -41,24 +48,37 @@
 									</div>
 								</div>
 							</div>
+
 							<div class="b_snowman">
 								<div class="b_body">
 									<div class="b_dress"></div>
 									<div class="b_hat"></div>
 								</div>
 							</div>
+
 							<div class="a_snowman">
 								<div class="a_body">
 									<div class="a_dress"></div>
 									<div class="a_hat"></div>
 								</div>
 							</div>
+
+							<div class="g_gift" ng-click="clickGift" ng-doubleclick="doubleClickGift">
+								<div class="g_top"></div>
+								<div class="g_left_t g_side_t"></div>
+								<div class="g_mid_t g_side_t"></div>
+								<div class="g_right_t g_side_t"></div>
+								<div class="g_left_l g_side_l"></div>
+								<div class="g_mid_l g_side_l"></div>
+								<div class="g_right_l g_side_l"></div>
+							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
+	
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

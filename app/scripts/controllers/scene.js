@@ -1,46 +1,43 @@
 'use strict';
 
-define(['app','jQuery','Sprite3D'], function(app,$,Sprite3D){
+define(['app','jQuery','Sprite3D','services/resizer'], function(app,$,Sprite3D){
 	
-	return app.controller('MainCtrl', ['$scope', function MainCtrl($scope) {
+	return app.controller('SceneCtrl', ['$scope','Resizer', function($scope, resizer) {
 	
-		console.log('hi2');
 		if(1===0){ $scope=null;}
 		//var isSupported = Sprite3D.isSupported();
-		/*
-		var sta = {
-			width: $('#stage').width(),
-			height: $('#stage').height()
-		};
-		*/
-		var win = {
-				width: $(window).width(),
-				height: $(window).height()
-			};
 		//var fps = 2;
 			
-		var stage = Sprite3D.stage($('#stage').get(0)).origin(0, 0, 0).position(0 ,0,0).perspective(900).update();
+		var stage = Sprite3D.stage($('#stage').get(0)).origin(0, 0, 0).position(0 ,0,0).perspective(700).update();
 
 		var scene = Sprite3D.create($('.scene').get(0)).origin(0,0,0).position(0,0,0).update();
 
 		var data = [
 			['ground','s1',[0,160,-225],null],
 
-			['t_feet','s2',[60,-65,-30],[0,20,0]],
+			['t_feet','s2',[60,-65,-75],[0,20,0]],
 			['t_mid','s3',[-100,-90,30],[15,0,0]],
 			['t_top','s4',[80,-80,35],null],
 			['t_star','s5',[60,-200,50],[-15,0,0]],
 
-			['b_body','s4',[470,-50,30],[0,-15,0]],
+			['b_body','s4',[470,-50,0],[0,-15,0]],
 			['b_dress','s5',[20,65,10],null],
 			['b_hat','s6',[40,0,15],null],
 
 	
-			['a_body','s3',[530,-115,110],[0,-30,0]],
+			['a_body','s3',[530,-115,80],[0,-30,0]],
 			['a_dress','s4',[45,80,10],null],
-			['a_hat','s4',[50,-5,10],null]
+			['a_hat','s5',[50,-5,10],null],
 
-		
+			['g_top', 's6', [245,245,140],null],
+			['g_left_t', 's6', [245-150/2+1,245+45,140-60/2],[90,90,0]],
+			['g_mid_t', 's6', [245,245+150/2+45-1,140-60/2],[90,0,0]],
+			['g_right_t', 's6', [245+150/2-1,245+45,140-60/2],[90,90,0]],
+
+			['g_left_l', 's6', [250-140/2,250,140/2],[90,90,0]],
+			['g_mid_l', 's6', [250,250+140/2-1,140/2],[90,0,0]],
+			['g_right_l', 's6', [250+140/2,250,140/2],[90,90,0]]
+
 		];
 
 		var item, tmp, d;
@@ -70,13 +67,6 @@ define(['app','jQuery','Sprite3D'], function(app,$,Sprite3D){
 			$('.'+d[0]).wrap('<div class="bouncing '+d[1]+' wrapper-'+d[0]+'">');
 		}
 
-		$(document).resize(function(){
-			win = {
-				width: $(window).width(),
-				height: $(window).height()
-			};
-		});
-
 		stage.scale(0.5,0.5,0.5).update();
 		$('body').addClass('animate');
 
@@ -100,11 +90,21 @@ define(['app','jQuery','Sprite3D'], function(app,$,Sprite3D){
 					scene.rotation(-dy/dg, dx/dg, 0).update();
 					setTimeout(timeFunc, 300);
 				}
+				var win = resizer.size();
 				dx = e.pageX - win.width/2;
 				dy = e.pageY - win.height/2;
 			};
 			$(document).mousemove(mousemove);
 		})();
+
+		$scope.clickGift = function(){
+			console.log('1');
+		}
+
+		$scope.doubleClickGift = function(){
+			console.log()('2');	
+		}
+
 
 	/*
 		setInterval((function(){
