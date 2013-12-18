@@ -75,7 +75,7 @@ define([
 
 			for(item in data){
 				d = data[item];
-				$('.'+d[0]).wrap('<div class="animate bouncing-'+d[1]+' eruption-'+d[2]+' wrapper-'+d[0]+'">');
+				$('.'+d[0]).wrap('<div class="animate bouncing-'+d[1]+' wrapper-'+d[0]+'">');
 			}
 
 			stage.scale(0.5,0.5,0.5).update();
