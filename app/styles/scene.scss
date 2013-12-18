@@ -10,7 +10,7 @@ body {
 	overflow: hidden;
 }
 
-@mixin el( $el, $x, $y, $ox, $oy){
+@mixin el( $el, $ox, $oy, $oz){
 	.wrapper-#{$el} {
 		width:100%;
 		height:100%;
@@ -22,13 +22,8 @@ body {
 		@if $oy != 0 {
 			-webkit-transform-origin-y: #{$oy}px;
 		}
-		.#{$el} {
-			@if $x != 0 {
-				-webkit-transform-origin-x: #{$x}px;
-			}
-			@if $y != 0 {
-				-webkit-transform-origin-y: #{$y}px;
-			}
+		@if $oz != 0 {
+			-webkit-transform-origin-z: #{$oz}px;
 		}
 	}
 }
@@ -70,49 +65,49 @@ body {
 	.t_ground{
 		-webkit-transform: rotateX(90deg);
 	}
-	.t_tree, .b_snowman, .a_snowman{
+	.t_tree, .b_snowman, .a_snowman, .g_gift{
 		-webkit-transform: rotateX(-90deg);
 	}
 
-	@include el('ground', 0, 0, 0, 0);
-	@include el('t_feet', 0, 280, 120, 230);
-	@include el('t_mid', 0, 0, 120, 35);
-	@include el('t_top', 0, 0, 250, 25);
-	@include el('t_star', 0, 0, 180, 10);
+	@include el('ground', 0, 0, 0);
+	@include el('t_feet', 120, 230, 0);
+	@include el('t_mid', 120, 35, 0);
+	@include el('t_top', 250, 25, 0);
+	@include el('t_star', 180, 10, 0);
 
-	@include el('b_body', 0, 0, 560, 190);
-	@include el('b_dress', 0, 0, 130, 90);
-	@include el('b_hat', 0, 0, 100, 10);
+	@include el('b_body', 560, 190, 0);
+	@include el('b_dress', 130, 90, 0);
+	@include el('b_hat', 100, 10, 0);
 
-	@include el('a_body', 0, 0, 650, 220);
-	@include el('a_dress', 0, 0, 160, 140);
-	@include el('a_hat', 0, 0, 130, 10);
+	@include el('a_body', 650, 220, 0);
+	@include el('a_dress', 160, 140, 0);
+	@include el('a_hat', 130, 10, 0);
 
-	@include el('g_top', 0, 0, 0, 0);
-	@include el('g_left_t', 0, 0, 0, 0);
-	@include el('g_mid_t', 0, 0, 0, 0);
-	@include el('g_right_t', 0, 0, 0, 0);
-	@include el('g_left_l', 0, 0, 0, 0);
-	@include el('g_mid_l', 0, 0, 0, 0);
-	@include el('g_right_l', 0, 0, 0, 0);
+	@include el('g_top', 320, 225, 70);
+	@include el('g_left_t', 320, 225, 70);
+	@include el('g_mid_t', 320, 225, 70);
+	@include el('g_right_t', 320, 225, 70);
+	@include el('g_left_l', 320, 225, 70);
+	@include el('g_mid_l', 320, 225, 70);
+	@include el('g_right_l', 320, 225, 70);
 
 }
 
-.animate {
-	.bouncing {
-		-webkit-animation: POP $animate-time;
+.bounce {
+	.animate {
+		-webkit-animation: BOUNCING $animate-time;
 		-webkit-animation-fill-mode: forwards;
 		-webkit-transform: scale3d(0,0,0);
 	}
 
 	@for $i from 0 through 6 {
-		.s#{$i} {
+		.bouncing-#{$i} {
 			-webkit-animation-delay: $i*$animate-delay;
 		}		
 	}
 }
 
-@-webkit-keyframes POP{
+@-webkit-keyframes BOUNCING{
 	0% {
 		-webkit-transform: scale3d(0,0,0);
 	}
@@ -132,4 +127,64 @@ body {
 		-webkit-transform: scale3d(1,1,1);
 	}
 }
+
+.erupt {
+	.animate {
+		//-webkit-animation: ERUPTION $animate-time;
+		//-webkit-animation-fill-mode: forwards;
+	}
+
+	.wrapper-ground.animate {
+		-webkit-animation: ERUPTION-GROUND $animate-time;
+	}
+
+	@for $i from 0 through 6 {
+		.eruption-#{$i} {
+			-webkit-animation-delay: $i*$animate-delay;
+		}
+	}
+}
+
+@-webkit-keyframes ERUPTION{
+	0% {
+		-webkit-transform: scale3d(1,1,1);
+	}
+	30% {
+		-webkit-transform: scale3d(1.4, 0.6, 1.4);
+	}
+	50% {
+		-webkit-transform: scale3d(0.6, 1.4, 0.6);
+	}
+	65% {
+		-webkit-transform: scale3d(1.2, 0.8, 1.2);
+	}
+	80% {
+		-webkit-transform: scale3d(0.8, 1.2, 0.8);
+	}
+	100% {
+		-webkit-transform: scale3d(1,1,1);
+	}
+}
+
+@-webkit-keyframes ERUPTION-GROUND{
+	0% {
+		-webkit-transform: scale3d(1,1,1);
+	}
+	30% {
+		-webkit-transform: scale3d(1.4, 1.4, 0.6);
+	}
+	50% {
+		-webkit-transform: scale3d(0.6, 0.6, 1.4);
+	}
+	65% {
+		-webkit-transform: scale3d(1.2, 1.2, 0.8);
+	}
+	80% {
+		-webkit-transform: scale3d(0.8, 0.8, 1.2);
+	}
+	100% {
+		-webkit-transform: scale3d(1,1,1);
+	}
+}
+
 

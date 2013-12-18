@@ -20,7 +20,12 @@ require.config({
 
 });
 
-require(['app','angular','controllers/scene','controllers/snow'],function(app,angular){
+require([
+	'app',
+	'angular',
+	'controllers/scene',
+	'controllers/snow'
+],function(app,angular){
 
 	angular.bootstrap(document, ['christmas2013App']);
 });

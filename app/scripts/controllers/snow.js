@@ -1,8 +1,13 @@
 'use strict';
 
-define(['app','jQuery','services/resizer'], function(app,$){
+define([
+	'app',
+	'jQuery',
+	'services/resizer',
+	'services/animate'
+], function(app,$){
 	
-	return app.controller('SnowCtrl', ['$scope','Resizer', function($scope, resizer) {
+	return app.controller('SnowCtrl', ['$scope','Resizer','Animate', function($scope, resizer, animate) {
 		var snowNum = 150;
 
 		var Snowflake = function(){
@@ -11,7 +16,7 @@ define(['app','jQuery','services/resizer'], function(app,$){
 			var ySeed = Math.random();
 			var _y = (0.2*ySeed-0.6)*size.height,
 					_x = (Math.random()-0.5)*size.width* 0.5,
-					_z = -ySeed*600;
+					_z = -ySeed*600+500;
 		
 			var direction = _x>0?1:-1;
 			var xSpeed = direction*(Math.random()-0.1),
@@ -50,18 +55,20 @@ define(['app','jQuery','services/resizer'], function(app,$){
 			return this;
 		};
 
-		var i = snowNum;
-		var b = function(){
-			new Snowflake();
-			if(--i > 0){
-				setTimeout(b,100);
+
+		$scope.$on('boxClick',function(){
+			if(animate('erupt',(1.6+0.28*1.6*3)*1000)){
+				var i = snowNum,
+					s = function(){
+						new Snowflake();
+						if(--i > 0){
+							setTimeout(s,300);
+						}
+					};
+				setTimeout(s,1000);
 			}
-		};
-		b();
-	
-		$scope.$emit('firesnow',function(){
-			
 		});
+
 
 	}]);
 });
