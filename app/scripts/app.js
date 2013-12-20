@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular'], function(angular){
-	return angular.module('christmas2013App',[]);
+define(['angular','angularsanitize'], function(angular){
+	return angular.module('christmas2013App',['ngSanitize']);
 
 });

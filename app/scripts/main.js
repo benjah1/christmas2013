@@ -4,7 +4,9 @@ require.config({
 	paths: {
 		angular: '/bower_components/angular/angular.min',
 		jQuery: '/bower_components/jquery/jquery.min',
-		Sprite3D: '/bower_components/sprite/Sprite3D'
+		Sprite3D: '/bower_components/sprite/Sprite3D',
+		angularsanitize: '/bower_components/angular-sanitize/angular-sanitize',
+		Modal: '/bower_components/sass-bootstrap/js/modal'
 	},
 	shim: {
 		angular: {
@@ -15,16 +17,24 @@ require.config({
 		},
 		Sprite3D: {
 			exports: 'Sprite3D'
+		},
+		angularsanitize: {
+			deps: ['angular'],
+			exports: 'angularsanitize'
+		},
+		Modal: {
+			deps: ['jQuery'],
+			exports: 'Modal'
 		}
 	}
-
 });
 
 require([
 	'app',
 	'angular',
 	'controllers/scene',
-	'controllers/snow'
+	'controllers/snow',
+	'controllers/popup'
 ],function(app,angular){
 
 	angular.bootstrap(document, ['christmas2013App']);

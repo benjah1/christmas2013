@@ -1,0 +1,26 @@
+.modal-popup {
+	color: #000;
+	font: {
+		size: 45px;
+
+	}
+
+	.slide1 {
+		display: none;
+	}
+
+	.modal-body {
+		padding: 40px;
+	}
+}
+
+.modal-popup.fade {
+	-webkit-transition: opacity 1s linear;
+}
+
+@media screen and (min-width: 768px){
+	.modal-dialog {
+		width: 800px;
+	}
+
+}

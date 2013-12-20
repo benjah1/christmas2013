@@ -11,20 +11,21 @@ define([
 	
 	return app.controller('SceneCtrl', [
 		'$scope',
+		'$rootScope',
 		'Resizer',
 		'Animate',
-		function($scope, resizer, animate) {
+		function($scope, $rootScope, resizer, animate) {
 		
 			if(1===0){ $scope=null;}
 			//var isSupported = Sprite3D.isSupported();
 			//var fps = 2;
 				
-			var stage = Sprite3D.stage($('#stage').get(0)).origin(0, 0, 0).position(0 ,0,0).perspective(700).update();
+			Sprite3D.stage($('#stage').get(0)).origin(0, 0, 0).position(0 ,0,0).perspective(700).update();
 
-			var scene = Sprite3D.create($('.scene').get(0)).origin(0,0,0).position(0,0,0).update();
+			var scene = Sprite3D.create($('.scene').get(0)).origin(0,0,0).position(-400,0,0).rotation(10,0,0).update();
 
 			var data = [
-				['ground','1', '1', [0,160,-225],null],
+				['ground','1', '1', [0,160,0],null],
 
 				['t_feet','2', '1', [60,-65,-75],[0,20,0]],
 				['t_mid','3', '1', [-100,-90,30],[15,0,0]],
@@ -40,15 +41,17 @@ define([
 				['a_dress','4', '1', [45,80,10],null],
 				['a_hat','5', '1', [50,-5,10],null],
 
-				['g_top','6', '1', [245,10,150/2],[-90,0,0]],
+				['g_top','6', '1', [245,10+1,150/2],[-90,0,0]],
 				['g_left_t','6', '1', [245-150/2+1,85,150/2],[0,90,0]],
-				['g_mid_t','6', '1', [245,85,150],[0,0,0]],
-				['g_right_t','6', '1', [245+150/2,85,150/2],[0,90,0]],
+				['g_mid_t','6', '1', [245,85,149],[0,0,0]],
+				['g_right_t','6', '1', [245+150/2-1,85,150/2],[0,90,0]],
 
-				['g_left_l','6', '1', [250-140/2,450/2-140,140/2],[0,90,0]],
-				['g_mid_l','6', '1', [250,450/2-140,140],[0,0,0]],
-				['g_right_l','6', '1', [250+140/2,450/2-140,140/2],[0,90,0]]
+				['g_left_l','6', '1', [250-140/2+1,450/2-140,140/2],[0,90,0]],
+				['g_mid_l','6', '1', [250,450/2-140,140-1],[0,0,0]],
+				['g_right_l','6', '1', [250+140/2-1,450/2-140,140/2],[0,90,0]],
 
+				
+				['t_text','7', '1', [230,260,440],[-110,0,0]]
 			];
 
 			var item, tmp, d;
@@ -78,13 +81,13 @@ define([
 				$('.'+d[0]).wrap('<div class="animate bouncing-'+d[1]+' wrapper-'+d[0]+'">');
 			}
 
-			stage.scale(0.5,0.5,0.5).update();
-			animate('bounce', (1.6+0.28*1.6*6)*1000);
+			//stage.scale(0.5,0.5,0.5).update();
+			animate('bounce', (1.6+0.28*1.6*7)*1000);
 
 			(function(){
 				var hasTimer = false, updated = false, dx, dy, dg = 16,
 				timeFunc = function(){
-					scene.rotation(-dy/dg, dx/dg, 0).update();
+					scene.rotation(-dy/dg+10, dx/dg, 0).update();
 					if(updated){
 						setTimeout(timeFunc,300);
 						updated = false;
@@ -93,17 +96,17 @@ define([
 					}
 				},
 				mousemove = function(e){
+					var win = resizer.size();
+					dx = e.pageX - win.width/2;
+					dy = e.pageY - win.height/2;
 					if(hasTimer){
 						updated = true;
 					}else{
 						hasTimer = true;
 						updated = false;
-						scene.rotation(-dy/dg, dx/dg, 0).update();
+						scene.rotation(-dy/dg+10, dx/dg, 0).update();
 						setTimeout(timeFunc, 300);
 					}
-					var win = resizer.size();
-					dx = e.pageX - win.width/2;
-					dy = e.pageY - win.height/2;
 				};
 				$(document).mousemove(mousemove);
 			})();
@@ -114,12 +117,17 @@ define([
 			box.singleDoubleClick(function(){
 				$scope.$broadcast('boxClick');
 
-
 			}, function(){
+				$rootScope.$broadcast('showModal');
+				console.log('double click');
 
-				console.log('hi2');
 			},200);
 
+			$scope.$on('updateScene',function(a,o){
+				var ratio = o.w/1600;
+				scene.scale(ratio, ratio, ratio).update();
+				$('#stage').css('margin-top',o.oh-500-(o.oh-o.h)/2);
+			});
 		/*
 			setInterval((function(){
 				var s = 0, dt = 1;
