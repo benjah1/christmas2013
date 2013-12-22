@@ -2,6 +2,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 @import 'sprite.scss';
+@import 'cover.scss';
 @import 'scene.scss';
 @import 'snow.scss';
 @import 'popup.scss';
@@ -15,8 +16,9 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 /* Space out content a bit */
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-image: url('/images/body_bg.png');
 }
 
 .content {
@@ -25,15 +27,21 @@ body {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	
-	#stage {
-		margin: 0 auto;
+	display: none;
+}
 
-		.wrapper-scene {
-			-webkit-transform: scale3d(1,1,1);	
-			-webkit-transition: -webkit-transform,margin 1s;
+.footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	div {
+		text-align: center;
+		color: #ddd;
+		font: {
+			size: 10px;
 		}
-
 	}
 }
 

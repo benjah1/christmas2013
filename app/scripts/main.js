@@ -39,7 +39,8 @@ require([
 	'angular',
 	'controllers/scene',
 	'controllers/snow',
-	'controllers/popup'
+	'controllers/popup',
+	'controllers/cover'
 ],function(app,angular){
 
 	angular.bootstrap(document, ['christmas2013App']);

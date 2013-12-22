@@ -1,0 +1,14 @@
+.cover {
+	-webkit-transition: opacity 0.5s;
+	opacity:1;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 50%;
+	bottom: 0;
+
+	.envelope {
+		width: 240px;
+		margin: 0 auto;
+	}
+}

@@ -14,7 +14,6 @@ define(['app','jQuery'], function(app,$){
 						var w = width,
 								h = height;
 						
-						console.log(w);
 						if( 1600 >= width || 900 >= height ){
 							var dt = (width/height)/ratio;
 							if( 1 <= dt ){

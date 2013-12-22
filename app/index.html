@@ -26,6 +26,13 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
+		<div class="cover" ng-controller="CoverCtrl">
+			<div class="envelope">
+				<span ng-click="play()"><img src="images/envelope.png" /></span>
+			</div>
+		</div>
+
+
 		<div class="modal fade" ng-controller="PopupCtrl" role="dialog" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -113,6 +120,8 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="footer"><div>Copyright &copy; 2013-2014 Zhibin Huang. All Rights Reserved.</div></div>
 	
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>

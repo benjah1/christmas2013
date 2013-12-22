@@ -41,7 +41,7 @@ define([
 				['a_dress','4', '1', [45,80,10],null],
 				['a_hat','5', '1', [50,-5,10],null],
 
-				['g_top','6', '1', [245,10+1,150/2],[-90,0,0]],
+				['g_top','6', '1', [245,10,150/2],[-90,0,0]],
 				['g_left_t','6', '1', [245-150/2+1,85,150/2],[0,90,0]],
 				['g_mid_t','6', '1', [245,85,149],[0,0,0]],
 				['g_right_t','6', '1', [245+150/2-1,85,150/2],[0,90,0]],
@@ -81,8 +81,7 @@ define([
 				$('.'+d[0]).wrap('<div class="animate bouncing-'+d[1]+' wrapper-'+d[0]+'">');
 			}
 
-			//stage.scale(0.5,0.5,0.5).update();
-			animate('bounce', (1.6+0.28*1.6*7)*1000);
+			//stage.scale(0.5,0.5,0.5).update();			
 
 			(function(){
 				var hasTimer = false, updated = false, dx, dy, dg = 16,
@@ -127,6 +126,11 @@ define([
 				var ratio = o.w/1800;
 				scene.scale(ratio, ratio, ratio).update();
 				$('#stage').css('margin-top',o.oh-450-(o.oh-o.h)/2);
+			});
+		
+			$scope.$on('play',function(a,o){
+				$('.content').css('display','block');
+				animate('bounce', (1.6+0.28*1.6*7)*1000);
 			});
 		/*
 			setInterval((function(){
