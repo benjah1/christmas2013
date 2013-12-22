@@ -1,21 +1,21 @@
-.modal-popup {
+.modal {
 	color: #000;
 	font: {
 		size: 45px;
 
 	}
-
+	
+	.slide0 {
+	}
 	.slide1 {
 		display: none;
 	}
-
+	.modal-content {
+		background-color: #eee;
+	}
 	.modal-body {
 		padding: 40px;
 	}
-}
-
-.modal-popup.fade {
-	-webkit-transition: opacity 1s linear;
 }
 
 @media screen and (min-width: 768px){

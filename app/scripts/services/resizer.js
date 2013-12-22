@@ -31,7 +31,7 @@ define(['app','jQuery'], function(app,$){
 					};
 
 			$(window).resize(resize);
-			setTimeout(resize,1000);
+			setTimeout(resize,500);
 			return {
 				size: function(){
 					return {

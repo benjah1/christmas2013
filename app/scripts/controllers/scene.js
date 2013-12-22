@@ -124,9 +124,9 @@ define([
 			},200);
 
 			$scope.$on('updateScene',function(a,o){
-				var ratio = o.w/1600;
+				var ratio = o.w/1800;
 				scene.scale(ratio, ratio, ratio).update();
-				$('#stage').css('margin-top',o.oh-500-(o.oh-o.h)/2);
+				$('#stage').css('margin-top',o.oh-450-(o.oh-o.h)/2);
 			});
 		/*
 			setInterval((function(){

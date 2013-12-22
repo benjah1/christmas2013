@@ -2,11 +2,12 @@
 
 require.config({
 	paths: {
-		angular: '/bower_components/angular/angular.min',
-		jQuery: '/bower_components/jquery/jquery.min',
-		Sprite3D: '/bower_components/sprite/Sprite3D',
-		angularsanitize: '/bower_components/angular-sanitize/angular-sanitize',
-		Modal: '/bower_components/sass-bootstrap/js/modal'
+		angular: '../bower_components/angular/angular',
+		jQuery: '../bower_components/jquery/jquery.min',
+		Sprite3D: '../bower_components/sprite/Sprite3D',
+		angularsanitize: '../bower_components/angular-sanitize/angular-sanitize',
+		Modal: '../bower_components/sass-bootstrap/js/modal',
+		requirejs: '../bower_components/requirejs/require',
 	},
 	shim: {
 		angular: {
@@ -19,11 +20,15 @@ require.config({
 			exports: 'Sprite3D'
 		},
 		angularsanitize: {
-			deps: ['angular'],
+			deps: [
+				'angular'
+			],
 			exports: 'angularsanitize'
 		},
 		Modal: {
-			deps: ['jQuery'],
+			deps: [
+				'jQuery'
+			],
 			exports: 'Modal'
 		}
 	}
