@@ -128,33 +128,10 @@ define([
 				$('#stage').css('margin-top',o.oh-450-(o.oh-o.h)/2);
 			});
 		
-			$scope.$on('play',function(a,o){
+			$scope.$on('play',function(){
 				$('.content').css('display','block');
 				animate('bounce', (1.6+0.28*1.6*7)*1000);
 			});
-		/*
-			setInterval((function(){
-				var s = 0, dt = 1;
-				return function(){
-					switch(s){
-						case 0:
-							stage.rotationY(dt).update();
-							break;
-						case 1:
-							stage.rotationX(dt*-1).update();
-							break;
-						case 2:
-							stage.rotationY(dt*-1).update();
-							break;
-						case 3:
-							stage.rotationX(dt).update();	
-							break;
-					}
-					s = (++s)%4;
-					console.log(s);
-				}
-			})(),1000/(fps*2));
-			*/
 
 		}
 	]);

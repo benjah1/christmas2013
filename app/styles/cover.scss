@@ -1,5 +1,5 @@
 .cover {
-	-webkit-transition: opacity 0.5s;
+	@include prefix(transition, opacity 0.5s);
 	opacity:1;
 	position: fixed;
 	left: 0;

@@ -2,15 +2,13 @@
 
 define([
 	'app',
-	'jQuery',
-	'services/resizer',
+	'jQuery'
 ], function(app,$){
 	
 	return app.controller('CoverCtrl', [
 		'$scope',
 		'$rootScope',
-		'Resizer',
-		function($scope, $rootScope, resizer) {
+		function($scope, $rootScope) {
 			$scope.play = function(){
 				$rootScope.$broadcast('play');
 				
@@ -19,8 +17,9 @@ define([
 					$('.cover').remove();
 				},500);
 
-			}
+			};
 		}
+
 	]);
 
 });

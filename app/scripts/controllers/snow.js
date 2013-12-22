@@ -28,7 +28,12 @@ define([
 			var init = function(){
 				var layer = Math.floor(Math.random()*3);
 				_inst = $('<div class="sf">').appendTo('#layer'+layer);
-				_inst.css('-webkit-transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)');
+				_inst.css('-webkit-transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)')
+					.css('-moz-transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)')
+					.css('-ms-transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)')
+					.css('-o-transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)')
+					.css('transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)');
+
 				//_inst.css('box-shadow','#efefef 0 0 4px 4px');
 				setTimeout(function(){
 					_inst.addClass('s');
@@ -38,7 +43,12 @@ define([
 			var fall = function(){
 				_y += ySpeed;
 				_x += xSpeed;
-				_inst.css('-webkit-transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)');
+				_inst.css('-webkit-transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)')
+					.css('-moz-transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)')
+					.css('-ms-transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)')
+					.css('-o-transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)')
+					.css('transform', 'translate3d('+_x+'px, '+_y+'px, '+_z+'px)');
+
 				if(--lifeTime > 0){
 					setTimeout(fall,1000/60);
 					if( 70 === lifeTime ){
