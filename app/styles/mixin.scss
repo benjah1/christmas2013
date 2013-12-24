@@ -1,0 +1,25 @@
+
+@mixin prefix($name, $argument) {
+	-webkit-#{$name}: #{$argument};
+	-ms-#{$name}: #{$argument};
+	-moz-#{$name}: #{$argument};
+	-o-#{$name}: #{$argument};
+	#{$name}: #{$argument};
+}
+
+@mixin keyframes( $animationName ) {
+	@-webkit-keyframes $animationName {
+		@content;
+	}
+	@-moz-keyframes $animationName {
+		@content;
+	}
+	@-o-keyframes $animationName {
+		@content;
+	}
+	@keyframes $animationName {
+		@content;
+	}
+}
+
+

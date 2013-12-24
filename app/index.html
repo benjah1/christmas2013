@@ -43,25 +43,12 @@
 
 					<div class="modal-body">
 					
-						<div class="slide">
-							<div ng-bind-html="getMessage()"></div>
+						<div ng-bind-html="getMessage()"></div>
 
 
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary" ng-click="share()" >Send Your Own</button>
-							</div>
-
-
+						<div class="modal-footer">
 						</div>
-						<div class="slide" style="display:none;">
-							<div><textarea ng-change="updateMessage()" ng-model='newMessage'></textarea></div>
-							<div><input type="text" ng-model="url" readonly/></div>
 
-							<div class="modal-footer">
-								<button type="button" class="preview btn btn-primary" ng-click="share()" >Back</button>
-							</div>
-
-						</div>
 
 					</div>
 
@@ -111,12 +98,14 @@
 
 								<div class="g_gift" ng-click="clickGift" ng-doubleclick="doubleClickGift">
 									<div class="g_top"></div>
-									<div class="g_left_t g_side_t"></div>
-									<div class="g_mid_t g_side_t"></div>
-									<div class="g_right_t g_side_t"></div>
-									<div class="g_left_l g_side_l"></div>
-									<div class="g_mid_l g_side_l"></div>
-									<div class="g_right_l g_side_l"></div>
+									<div class="g_left_t"></div>
+									<div class="g_mid_t">
+										<div id="popover" data-content="Click!!"></div>
+									</div>
+									<div class="g_right_t"></div>
+									<div class="g_left_l"></div>
+									<div class="g_mid_l"></div>
+									<div class="g_right_l"></div>
 								</div>
 
 								<div class="t_text"><p>Merry<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Christmas</p></div>

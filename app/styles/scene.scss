@@ -1,3 +1,5 @@
+@import 'mixin.scss';
+
 $animate-time: 1.6s;
 $animate-delay: 0.28*$animate-time;
 
@@ -22,19 +24,26 @@ $maxHeight: 450px;
 	}
 }
 
+@mixin prefixin($name, $argument) {
+	-webkit-#{$name}: -webkit-#{$argument};
+	-ms-#{$name}: -ms-#{$argument};
+	-moz-#{$name}: -moz-#{$argument};
+	-o-#{$name}: -o-#{$argument};
+	#{$name}: #{$argument};
+}
+
 #stage{
 	width: 0;
 	height: 0;
 	background-color: rgba(30, 30, 30, 0.5);
-	@include prefix(transition, margin-top 0.3s linear);
+	@include prefix(transition, "margin-top 0.3s linear");
 
 	margin: 0 auto;
 
 	.wrapper-scene {
 		@include prefix(transform, scale3d(1,1,1));	
-		@each $prefix in $prefixes {
-			#{$prefix}transition: #{$prefix}transform,margin 1s;
-		}
+		
+		@include prefix(transition, "all 1s");
 	}
 
 	.scene {
@@ -44,15 +53,13 @@ $maxHeight: 450px;
 		margin: 0 auto!important;
 		position:inherit!important;
 
-		@each $prefix in $prefixes {
-			#{$prefix}transition: #{$prefix}transform 0.3s linear;
-		}
+
+		@include prefix(transition, all 0.3s linear);
+
 		@include prefix(transform-origin-y, 450px);
 
 		div {
 			position:absolute;
-			top:0;
-			left:0;
 		}
 	}
 	
@@ -112,6 +119,23 @@ $maxHeight: 450px;
 	@include el('g_right_l', 320, 225, 70);
 
 	@include el('t_text', 320, 225, 70);
+
+	#popover {
+		width:150px;
+		height:100%;
+	}
+	.popover {
+		color: #000;
+		margin-left: 50%;
+		left: -25%!important;
+		.popover-content {
+			white-space: nowrap;
+			position: initial;
+		}
+	}
+	.double .popover {
+		left: -40%!important;
+	}
 
 }
 

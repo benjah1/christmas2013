@@ -9,7 +9,6 @@ define(['app','jQuery'], function(app, $){
 				if(_onHold){
 					return false;
 				}
-				console.log(classname);
 				$('body').addClass(classname);
 				setTimeout(function(){
 					$('body').removeClass(classname);

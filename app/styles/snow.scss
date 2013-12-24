@@ -1,3 +1,4 @@
+@import 'mixin.scss';
 
 #snow {
 	width: 100%;
@@ -22,6 +23,7 @@
 	#layer0{
 		@include prefix(animation, WAVE 4s infinite);
 	}
+
 	#layer1{
 		@include prefix(animation, WAVE 3s infinite);
 	}

@@ -6,6 +6,7 @@ define([
 	'Sprite3D',
 	'services/resizer',
 	'services/animate',
+	'Popover',
 	'single_double_click'
 ], function(app,$,Sprite3D){
 	
@@ -112,13 +113,31 @@ define([
 
 			
 			var box = $('.g_top, .g_left_t, .g_mid_t, .g_right_t, .g_left_l, .g_mid_l, .g_right_l');
+			var popTimer = 0, popTimer2 = 0, hasDoubleClick = false;
 
 			box.singleDoubleClick(function(){
 				$scope.$broadcast('boxClick');
+		
+				pop.popover('hide');
+				clearTimeout(popTimer);
+				if(!hasDoubleClick){
+					pop.popover('destroy');
+					pop.attr('data-content','Double Click!!');
+					$('.g_mid_t').addClass('double');
+					pop.popover({
+						placement: 'top',
+						trigger: 'manual'
+					});
+					popTimer2 = setTimeout(function(){
+						pop.popover('show');	
+					},5000);
+				}
 
 			}, function(){
 				$rootScope.$broadcast('showModal');
-				console.log('double click');
+				pop.popover('hide');
+				clearTimeout(popTimer2);
+				hasDoubleClick = true;
 
 			},200);
 
@@ -131,7 +150,18 @@ define([
 			$scope.$on('play',function(){
 				$('.content').css('display','block');
 				animate('bounce', (1.6+0.28*1.6*7)*1000);
+
+				popTimer = setTimeout(function(){
+					pop.popover('show');
+				},8000);
 			});
+
+			var pop = $('#popover').popover({
+				placement: 'top',
+				trigger: 'manual'
+			});
+
+			//pop.popover('show');
 
 		}
 	]);

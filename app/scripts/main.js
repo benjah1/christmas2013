@@ -7,6 +7,8 @@ require.config({
 		Sprite3D: '../bower_components/sprite/Sprite3D',
 		angularsanitize: '../bower_components/angular-sanitize/angular-sanitize',
 		Modal: '../bower_components/sass-bootstrap/js/modal',
+		Tooltip: '../bower_components/sass-bootstrap/js/tooltip',
+		Popover: '../bower_components/sass-bootstrap/js/popover',
 		requirejs: '../bower_components/requirejs/require',
 	},
 	shim: {
@@ -30,7 +32,18 @@ require.config({
 				'jQuery'
 			],
 			exports: 'Modal'
+		},
+		Tooltip:{
+			deps: ['jQuery'],
+			exports: 'Tooltip'
+		},
+		Popover: {
+			deps: [
+				'jQuery','Tooltip'
+			],
+			exports: 'Popover'
 		}
+
 	}
 });
 

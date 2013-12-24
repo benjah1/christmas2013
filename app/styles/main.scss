@@ -1,34 +1,11 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
-@mixin prefix($name, $argument) {
-	-webkit-#{$name}: #{$argument};
-	-ms-#{$name}: #{$argument};
-	-moz-#{$name}: #{$argument};
-	-o-#{$name}: #{$argument};
-	#{$name}: #{$argument};
-}
-@mixin keyframes( $animationName ) {
-	@-webkit-keyframes $animationName {
-		@content;
-	}
-	@-moz-keyframes $animationName {
-		@content;
-	}
-	@-o-keyframes $animationName {
-		@content;
-	}
-	@keyframes $animationName {
-		@content;
-	}
-}
-$prefixes: ("-webkit-","-moz-", "-ms-", "-o-", "");
-
-@import 'sass-bootstrap/lib/bootstrap';
 @import 'sprite.scss';
 @import 'cover.scss';
 @import 'scene.scss';
 @import 'snow.scss';
 @import 'popup.scss';
+@import 'sass-bootstrap/lib/bootstrap';
 
 .browsehappy {
     margin: 0.2em 0;
