@@ -8,8 +8,7 @@ require.config({
 		angularsanitize: '../bower_components/angular-sanitize/angular-sanitize',
 		Modal: '../bower_components/sass-bootstrap/js/modal',
 		Tooltip: '../bower_components/sass-bootstrap/js/tooltip',
-		Popover: '../bower_components/sass-bootstrap/js/popover',
-		requirejs: '../bower_components/requirejs/require',
+		Popover: '../bower_components/sass-bootstrap/js/popover'
 	},
 	shim: {
 		angular: {

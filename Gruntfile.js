@@ -359,8 +359,85 @@ module.exports = function (grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
-    }
-  });
+    },
+		browser_sync: {
+			files: {
+				src : [
+					'<%= yeoman.app %>/*.html',
+					'.tmp/styles/{,*/}*.css',
+					'{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+					'<%= yeoman.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
+				],
+			},
+			options: {
+				watchTask: true,
+				ghostMode: {
+					scroll: true,
+					links: true,
+					forms: true
+				},
+				server: {
+					baseDir: '<%= yeoman.app %>'
+				}
+			}
+		},
+
+		requirejs: {
+			compile: {
+				options: {
+					include: '../bower_components/requirejs/require',
+					paths:{
+						angular: '../bower_components/angular/angular',
+						jQuery: '../bower_components/jquery/jquery.min',
+						Sprite3D: '../bower_components/sprite/Sprite3D',
+						angularsanitize: '../bower_components/angular-sanitize/angular-sanitize',
+						Modal: '../bower_components/sass-bootstrap/js/modal',
+						Tooltip: '../bower_components/sass-bootstrap/js/tooltip',
+						Popover: '../bower_components/sass-bootstrap/js/popover'
+					},
+					shim: {
+						angular: {
+							exports: 'angular'
+						},
+						jQuery: {
+							exports: 'jQuery'
+						},
+						Sprite3D: {
+							exports: 'Sprite3D'
+						},
+						angularsanitize: {
+							deps: [
+								'angular'
+							],
+							exports: 'angularsanitize'
+						},
+						Modal: {
+							deps: [
+								'jQuery'
+							],
+							exports: 'Modal'
+						},
+						Tooltip:{
+							deps: ['jQuery'],
+							exports: 'Tooltip'
+						},
+						Popover: {
+							deps: [
+								'jQuery','Tooltip'
+							],
+							exports: 'Popover'
+						}
+					},
+
+					//mainConfigFile: '<%= yeoman.app %>/scripts/main.js',
+					name: "main",
+					baseUrl: '<%= yeoman.app %>/scripts/',
+					out: '<%= yeoman.dist %>/scripts/app.min.js'
+				}
+			}
+		}
+
+});
 
 
   grunt.registerTask('serve', function (target) {
@@ -373,6 +450,7 @@ module.exports = function (grunt) {
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
+      'browser_sync',
       'watch'
     ]);
   });
@@ -392,6 +470,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+		'requirejs',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
@@ -411,5 +490,10 @@ module.exports = function (grunt) {
     'build'
   ]);
 
+	grunt.registerTask('default', ['bower']);
+
+	grunt.loadNpmTasks('grunt-contrib-requirejs');	
 	grunt.loadNpmTasks('node-sprite-generator');
+	grunt.loadNpmTasks('grunt-browser-sync');
+
 };

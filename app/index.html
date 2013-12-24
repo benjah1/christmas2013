@@ -130,7 +130,13 @@
        ga('send', 'pageview');
     </script>
 
-    <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+
+		<!-- REMOVE THIS AFTER `grunt build` -->
+		<script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+		<!-- UNCOMMENT THIS AFTER `grunt build` -->
+		<!-- <script src="scripts/app.min.js"></script> -->
+
+
 
        <!-- build:js scripts/plugins.js
         <script src="bower_components/sass-bootstrap/js/affix.js"></script>
@@ -145,9 +151,10 @@
         <script src="bower_components/sass-bootstrap/js/tab.js"></script>
         <script src="bower_components/sass-bootstrap/js/tooltip.js"></script>
         <script src="bower_components/sass-bootstrap/js/popover.js"></script>
-        endbuild -->
-
+        endbuild 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <!-- endbuild -->
+        -->
+
 </body>
 </html>
