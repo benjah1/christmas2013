@@ -1,7 +1,21 @@
-# Christmas 2013
+# Christmas 2.0.13
 
-Christmas 2013 is my annual solo project that demonstrates my best of skills. 
+Christmas 2.0.13 is my annual solo project that demonstrates my best of skills in 2013. 
 
+## Tools
+- Vim
+- Git
+- Github
+- Gimp
+- Dropbox
+- Yeoman
+
+## Techniques
+- Javascript
+- Angular js
+- Require js
+- Sass
+- CSS 3
 
 ## License 
 
